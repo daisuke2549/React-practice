@@ -84,4 +84,25 @@ window.console.log(1+2+3);
 window.alert("警告メッセージです");
 
 
-window.document.getElementById()
+// window.document.getElementById()
+
+
+// function isTweetable(text){
+//     return text.length <= 140;
+// };
+
+
+//匿名関数 =関数がなくても動く
+
+const isTweetable   = function isTweetable(text){
+    return text.length <= 140;
+};
+
+console.log(isTweetable("foo"));
+
+
+function alertTweetable(text){
+    if (isTweetable(text)){
+       console.log("you can tweet!");
+    }
+};
