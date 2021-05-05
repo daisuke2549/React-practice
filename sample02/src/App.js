@@ -1,39 +1,59 @@
-import React from 'react';
-import './App.css';
 
+import React, {Component} from 'react'
+import {BrowserRouter, Route, Link} from 'react-router-dom'
 
-function App() {
+const App = () => (
+  <BrowserRouter>
+    <div class = "container text-center mt-5">
+      <Route exact path = "/" component={Home} />
+      <Route path ="/about" component={About} />
+      <Route path="/blog/:id" component={Blog} />
+      <Route path ="/sum/:num1/:num2" component = {Sum} />
+ 
+    </div>
+  </BrowserRouter>
+)
+
+const Home =  ()  => {
   return(
-    <div className = "container text-center">
-    <Clock />
+    <div>
+      <h1>
+          Welcome
+      </h1>
+      <p><Link to ="/about">Aboutページへ</Link></p>
     </div>
   )
 }
 
-
-class Clock extends React.Component{  //extendsでクラスを継承
-
-  constructor(props){
-    super(props);
-    this.now = new Date();
-    this.state ={
-      time: `${this.now.getHours()}:${this.now.getMinutes()}:${this.now.getSeconds()}`
-    }
-    
-    this.refresh = this.refresh.bind(this);
-  }
-
-  refresh(){
-    this.setState((state) => ({
-       time: '押しましたね'
-    }));
-  }
-
-
-  render(){
-    return <p onClick ={this.refresh}>{this.state.time}</p>
-  }
+const About = () =>{
+   return (
+     <div>
+       <h1>About</h1>
+     </div>
+   ) 
 }
 
+const Blog = props => {
+  const {id} = props.match.params
 
-export default App;
+  return(
+    <div>
+      <p>{id}番目の記事です。</p>
+    </div>
+  )
+}
+
+const Sum = props =>  {
+  const {num1, num2} = props.match.params
+
+  return (
+    <div>
+      <p>{num1} + {num2} = {parseInt(num1)+parseInt(num2)}</p>  
+    </div>
+  )
+}
+
+// parseInt() は、文字列の引数を解析し、指定された基数 (数学的記数法の底) の整数値を返します
+//integer = 整数に変換
+
+export default App
