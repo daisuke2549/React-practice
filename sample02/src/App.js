@@ -1,26 +1,39 @@
+import React from 'react';
 import './App.css';
 
-function App() {
 
-    let items = [
-      {"name": "いちご", "price": "100"},
-      {"name": "りんご", "price": "150"},
-      {"name": "バナナ", "price": "200"}
-    ]
+function App() {
   return(
-    <div className = "App">
-        <table className="table table-striped">
-          <tbody>
-              {items.map((value)  => (
-                <tr>
-                <th scope ="row">{value.name}</th>
-                <td>{value.price}円</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <div className = "container text-center">
+    <Clock />
     </div>
   )
 }
+
+
+class Clock extends React.Component{  //extendsでクラスを継承
+
+  constructor(props){
+    super(props);
+    this.now = new Date();
+    this.state ={
+      time: `${this.now.getHours()}:${this.now.getMinutes()}:${this.now.getSeconds()}`
+    }
+    
+    this.refresh = this.refresh.bind(this);
+  }
+
+  refresh(){
+    this.setState((state) => ({
+       time: '押しましたね'
+    }));
+  }
+
+
+  render(){
+    return <p onClick ={this.refresh}>{this.state.time}</p>
+  }
+}
+
 
 export default App;
