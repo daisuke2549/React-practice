@@ -52,7 +52,9 @@
 
 // console.log(sasaki.age);
 
-
+for (let i = 1;   i <  10; i++){
+    console.log(i);
+}
 
 
 // import youtuber from "./foo.js";
@@ -81,7 +83,7 @@ let youtuber  ={
 
 window.console.log(1+2+3);
 
-window.alert("警告メッセージです");
+// window.alert("警告メッセージです");
 
 
 // window.document.getElementById()
@@ -106,3 +108,41 @@ function alertTweetable(text){
        console.log("you can tweet!");
     }
 };
+
+function unfollow(){
+    console.log("フォローを外しましたか");
+}
+
+function cancelTweet(){
+    console.log("ツイートをキャンセルしました");
+}
+
+function confirmed(fn){
+    if(window.confirm("実行しますか")){
+        fn();
+    }
+}
+
+// confirmed(unfollow);
+
+
+var score = 40;
+var score = 1000;
+
+console.log(score);
+
+
+const obj = {
+    foo:123
+}
+
+console.log(obj.foo)
+
+obj.foo = 456;
+
+console.log(obj.foo);
+
+//関数とは？　⇨ タスクや値計算を実行する文の集まり
+//オブジェクトのメソッドが関数
+
+
